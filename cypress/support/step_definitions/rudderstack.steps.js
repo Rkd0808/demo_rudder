@@ -7,6 +7,7 @@ import DestinationPage from '../pages/destination.page';
 // Background Steps
 Given('I have valid RudderStack credentials', () => {
   ['RS_USER', 'RS_PASS', 'RS_WORKSPACE'].forEach((envVar) => {
+    cy.log(`${envVar} is ${Cypress.env(envVar) ? 'set' : 'NOT set'}`);
     expect(Cypress.env(envVar)).to.be.a('string').and.not.be.empty;
   });
 });
