@@ -7,7 +7,8 @@
   "cy:open": "cross-env DOTENV_CONFIG_PATH=.env.dev cypress open",
   "test:dev": "cross-env DOTENV_CONFIG_PATH=.env.dev cypress run",
   "test:qa":  "cross-env DOTENV_CONFIG_PATH=.env.qa  cypress run",
-  "test:prod":"cross-env DOTENV_CONFIG_PATH=.env.prod cypress run"
+  "test:prod":"cross-env DOTENV_CONFIG_PATH=.env.prod cypress run",
+  "test:ci": "cypress run"
 },
   "keywords": [
     "cypress",
