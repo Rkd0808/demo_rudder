@@ -21,13 +21,7 @@ jobs:
         run: npm ci
 
       - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
-        with:
-          start: npm start
-          wait-on: 'http://localhost:3000' # Change if your app runs on a different port
-          wait-on-timeout: 120
-        env:
-          CYPRESS_baseUrl: 'http://localhost:3000' # Change if needed
+        run: npm run test:ci
 
       - name: Upload Cypress screenshots (if any)
         if: always()
