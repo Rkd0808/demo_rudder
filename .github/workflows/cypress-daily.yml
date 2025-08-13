@@ -1,11 +1,13 @@
+
 name: Run Cypress Tests Daily
 
 on:
   schedule:
-  - cron: '30 14 * * *' # Runs at 8:00 PM IST (14:30 UTC) every day
+    - cron: '30 14 * * *' # Runs at 8:00 PM IST (14:30 UTC) every day
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   cypress-run:
@@ -59,16 +61,17 @@ jobs:
           name: eventsDeliveryCount-${{ github.run_id }}
           path: cypress/fixtures/eventsDeliveryCount.json
 
-      - name: Generate test report
+      - name: Generate Cypress Test Report
         if: always()
         run: |
           echo "## Cypress Test Report" >> $GITHUB_STEP_SUMMARY
           echo "Workflow completed at: $(date)" >> $GITHUB_STEP_SUMMARY
-          echo "See uploaded screenshots and videos for details on failures." >> $GITHUB_STEP_SUMMARY
-                - name: Generate Cypress Test Report
-          if: always()
-          run: |
-            echo "## Cypress Test Report" >> $GITHUB_STEP_SUMMARY
-            echo "Workflow completed at: $(date)" >> $GITHUB_STEP_SUMMARY
-            echo "Artifacts uploaded:" >> $GITHUB_STEP_SUMMARY
-            echo "Screenshots, Videos, test-config.json, eventsDeliveryCount.json can be found in the workflow run artifacts." >> $GITHUB_STEP_SUMMARY
+          echo "Artifacts uploaded:" >> $GITHUB_STEP_SUMMARY
+          echo "Screenshots, Videos, test-config.json, eventsDeliveryCount.json can be found in the workflow run artifacts." >> $GITHUB_STEP_SUMMARY
+      
+      - name: Upload Mochawesome HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report-${{ github.run_id }}
+          path: cypress/reports/*.html
