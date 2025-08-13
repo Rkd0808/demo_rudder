@@ -1,4 +1,3 @@
-
 name: Run Cypress Tests Daily
 
 on:
@@ -30,6 +29,7 @@ jobs:
         run: npx cypress install
 
       - name: Run Cypress tests
+        id: run_cypress_tests
         run: npm run test:ci
         env:
           RS_USER: ${{ secrets.RS_USER }}
@@ -79,3 +79,4 @@ jobs:
         with:
           name: mochawesome-report-${{ github.run_id }}
           path: cypress/reports/*.html
+
