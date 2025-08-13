@@ -49,8 +49,28 @@ rudderstack-e2e-cypress/
    npm install
    ```
 
+3. **Create your local environment file**
+   ```bash
    cp .env.dev .env.local
-   # Edit .env.local with your credentials
+   ```
+   Edit `.env.local` with your credentials:
+   ```env
+   # RudderStack credentials and environment config
+   RS_USER=your_rudderstack_username
+   RS_PASS=your_rudderstack_password
+   RS_WORKSPACE=https://app.rudderstack.com
+
+   # Data Plane URL and Write Key (captured or set for testing)
+   DATA_PLANE_URL=
+   WRITE_KEY=
+
+   # Optional: Webhook URL for testing
+   WEBHOOK_URL=https://demo.requestcatcher.com/
+
+   # Test configuration
+   TEST_TIMEOUT=30000
+   API_RETRY_COUNT=3
+   ```
    ```
 
 ## ⚙️ Configuration
