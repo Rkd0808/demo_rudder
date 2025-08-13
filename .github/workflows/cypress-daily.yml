@@ -49,28 +49,14 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-config
+          name: test-config-${{ github.run_id }}
           path: cypress/fixtures/test-config.json
 
       - name: Upload eventsDeliveryCount.json
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: eventsDeliveryCount
-          path: cypress/fixtures/eventsDeliveryCount.json
-
-      - name: Upload test-config.json
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-config
-          path: cypress/fixtures/test-config.json
-
-      - name: Upload eventsDeliveryCount.json
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: eventsDeliveryCount
+          name: eventsDeliveryCount-${{ github.run_id }}
           path: cypress/fixtures/eventsDeliveryCount.json
 
       - name: Generate test report
@@ -79,3 +65,13 @@ jobs:
           echo "## Cypress Test Report" >> $GITHUB_STEP_SUMMARY
           echo "Workflow completed at: $(date)" >> $GITHUB_STEP_SUMMARY
           echo "See uploaded screenshots and videos for details on failures." >> $GITHUB_STEP_SUMMARY
+                - name: Generate Cypress Test Report
+          if: always()
+          run: |
+            echo "## Cypress Test Report" >> $GITHUB_STEP_SUMMARY
+            echo "Workflow completed at: $(date)" >> $GITHUB_STEP_SUMMARY
+            echo "Artifacts uploaded:" >> $GITHUB_STEP_SUMMARY
+            echo "- [Screenshots](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+            echo "- [Videos](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+            echo "- [test-config.json](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+            echo "- [eventsDeliveryCount.json](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
