@@ -70,8 +70,6 @@ rudderstack-e2e-cypress/
    # Test configuration
    TEST_TIMEOUT=30000
    API_RETRY_COUNT=3
-   ```
-   ```
 
 ## ⚙️ Configuration
 
