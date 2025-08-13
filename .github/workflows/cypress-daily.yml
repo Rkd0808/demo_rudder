@@ -37,9 +37,45 @@ jobs:
           name: cypress-screenshots
           path: cypress/screenshots
 
+
       - name: Upload Cypress videos (if any)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos
+
+      - name: Upload test-config.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-config
+          path: cypress/fixtures/test-config.json
+
+      - name: Upload eventsDeliveryCount.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eventsDeliveryCount
+          path: cypress/fixtures/eventsDeliveryCount.json
+
+      - name: Upload test-config.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-config
+          path: cypress/fixtures/test-config.json
+
+      - name: Upload eventsDeliveryCount.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eventsDeliveryCount
+          path: cypress/fixtures/eventsDeliveryCount.json
+
+      - name: Generate test report
+        if: always()
+        run: |
+          echo "## Cypress Test Report" >> $GITHUB_STEP_SUMMARY
+          echo "Workflow completed at: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "See uploaded screenshots and videos for details on failures." >> $GITHUB_STEP_SUMMARY
