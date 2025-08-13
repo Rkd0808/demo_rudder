@@ -19,17 +19,13 @@ rudderstack-e2e-cypress/
 │   └── workflows/
 │       └── nightly.yml              # GitHub Actions workflow
 ├── cypress/
+# RudderStack E2E Cypress Automation Framework
+
 │   ├── e2e/
 │   │   └── features/
 │   │       └── rudderstack.feature  # Gherkin scenarios
 │   ├── support/
 │   │   ├── step_definitions/
-│   │   │   └── rudderstack.steps.js # Step implementations
-│   │   ├── pages/
-│   │   │   ├── login.page.js        # Login page object
-│   │   │   ├── connections.page.js  # Connections page object
-│   │   │   └── destination.page.js  # Destination page object
-│   │   ├── commands.js              # Custom Cypress commands
 │   │   └── e2e.js                   # Global test setup
 │   └── fixtures/                    # Test data files
 ├── .env.dev                         # Development environment variables
@@ -53,9 +49,6 @@ rudderstack-e2e-cypress/
    npm install
    ```
 
-3. **Configure environment variables**
-   Copy and update the environment files:
-   ```bash
    cp .env.dev .env.local
    # Edit .env.local with your credentials
    ```
@@ -70,45 +63,23 @@ Create `.env.*` files for each environment:
 # .env.dev (example)
 RS_USER=your-email@company.dev
 RS_PASS=your-password
-RS_WORKSPACE=https://app.rudderstack.com
 WEBHOOK_URL=https://your-subdomain.requestcatcher.com
 ```
 
-### RudderStack Setup
 
 1. **Sign up** for RudderStack Cloud at https://app.rudderstack.com
 2. **Create HTTP Source**: 
    - Go to Connections → Sources → Add Source → HTTP
    - Copy the Write Key
-3. **Create Webhook Destination**:
    - Go to Connections → Destinations → Add Destination → Webhook
    - Use RequestCatcher URL: https://requestcatcher.com
 4. **Connect Source to Destination**
 
 ## 🧪 Running Tests
-
-### Local Development
-
-```bash
-# Run tests with Cypress GUI
-npm run cy:open
-
-# Run tests headlessly
-npm run cy:run
-
-# Run tests for specific environment
-npm run test:dev
-npm run test:qa
-npm run test:prod
-```
-
-### Environment-Specific Testing
-
 ```bash
 # Development environment
 DOTENV_CONFIG_PATH=.env.dev npm run cy:run
 
-# QA environment  
 DOTENV_CONFIG_PATH=.env.qa npm run cy:run
 
 # Production environment
