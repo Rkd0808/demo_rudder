@@ -71,7 +71,4 @@ jobs:
             echo "## Cypress Test Report" >> $GITHUB_STEP_SUMMARY
             echo "Workflow completed at: $(date)" >> $GITHUB_STEP_SUMMARY
             echo "Artifacts uploaded:" >> $GITHUB_STEP_SUMMARY
-            echo "- [Screenshots](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
-            echo "- [Videos](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
-            echo "- [test-config.json](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
-            echo "- [eventsDeliveryCount.json](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+            echo "Screenshots, Videos, test-config.json, eventsDeliveryCount.json can be found in the workflow run artifacts." >> $GITHUB_STEP_SUMMARY
