@@ -1,5 +1,3 @@
-// cypress/support/pages/login.page.js
-
 class LoginPage {
   // Selectors
   get emailInput() {

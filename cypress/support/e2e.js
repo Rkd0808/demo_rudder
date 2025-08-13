@@ -1,12 +1,5 @@
-// cypress/support/e2e.js
-
-// Import commands and page objects
 import './commands';
-// Register Mochawesome reporter for HTML reports
 import 'cypress-mochawesome-reporter/register';
-
-// Import Cucumber preprocessor
-// This is required for Cucumber to work with Cypress
 
 // Set up global configurations
 before(() => {

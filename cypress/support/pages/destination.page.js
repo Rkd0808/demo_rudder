@@ -1,6 +1,3 @@
-// cypress/support/pages/destination.page.js
-
-
 class DestinationPage {
   // Selectors
   get refreshButton() {

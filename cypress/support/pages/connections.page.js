@@ -1,5 +1,3 @@
-// cypress/support/pages/connections.page.js
-
 class ConnectionsPage {
   // Selectors
   get destinationLink() {
